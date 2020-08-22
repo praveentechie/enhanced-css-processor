@@ -1,0 +1,7 @@
+.rule-one {
+  width: 100%;
+}
+
+.rule-two {
+  color: #d3d3d3;
+}
