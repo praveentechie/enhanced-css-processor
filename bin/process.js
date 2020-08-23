@@ -14,7 +14,11 @@ function _prepareForProcessing (program) {
 
 function _readFileForProcessing (inputPath, outputPath) {
   fs.readFile(inputPath, 'utf-8', (err, data) => {
-    console.log(err, data);
+    if (err) {
+      logger.error(err);
+      return;
+    }
+    logger.debug(data);
     processor(data, inputPath);
   });
 }
@@ -30,4 +34,5 @@ program
   .arguments('<inputFile>')
   .parse(process.argv);
 
+const logger = require('../src/core/logger')(program.debug);
 _prepareForProcessing(program);
